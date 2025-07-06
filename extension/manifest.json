@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Firefox MCP",
+  "version": "1.0",
+  "description": "Connects Firefox private browsing to AI assistants via MCP.",
+  "permissions": [
+    "nativeMessaging",
+    "tabs",
+    "windows"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "mcp@firefox.host"
+    }
+  }
+}

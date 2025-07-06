@@ -1,0 +1,7 @@
+{
+  "name": "firefox_mcp_host",
+  "description": "MCP server and native messaging host for Firefox.",
+  "path": "/var/www/firefox-mcp/host/host.js",
+  "type": "stdio",
+  "allowed_extensions": [ "mcp@firefox.host" ]
+}

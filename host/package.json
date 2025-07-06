@@ -1,0 +1,13 @@
+{
+  "name": "firefox-mcp-host",
+  "version": "1.0.0",
+  "description": "MCP server and native messaging host for Firefox.",
+  "main": "host.js",
+  "type": "module",
+  "scripts": {
+    "start": "node host.js"
+  },
+  "dependencies": {
+    "ws": "^8.17.0"
+  }
+}
