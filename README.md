@@ -18,6 +18,14 @@ The project operates on a simple yet powerful architecture:
     *   The extension executes the command (e.g., opens a URL in a new private window).
     *   A result or error is passed back through the same chain to the original WebSocket client.
 
+## Cross-Platform Architecture (WSL and Windows)
+
+This project is designed to work in a mixed environment where the Firefox browser runs on Windows, and the host application runs within the Windows Subsystem for Linux (WSL). This is achieved through the following:
+
+*   **`setup.bat`**: A Windows batch script that registers the native messaging host with Firefox on Windows. It creates a registry key that points to the `manifest.windows.json` file.
+*   **`manifest.windows.json`**: This manifest file tells Firefox how to launch the native messaging host. It uses `wsl.exe` to execute the `host.js` script within the WSL environment.
+*   **`setup.sh`**: A shell script for setting up the native messaging host on Linux and macOS.
+
 ## Features
 
 -   **Zero Third-Party Dependencies**: The host application is written in pure Node.js, making it lightweight and secure.
@@ -29,6 +37,19 @@ The project operates on a simple yet powerful architecture:
 ## Setup Instructions
 
 ### 1. Host Application Setup
+
+#### On Windows (with WSL):
+
+1.  Open a Command Prompt or PowerShell terminal on Windows.
+2.  Navigate to the `host` directory.
+3.  Run the `setup.bat` script. This will register the native messaging host with Firefox.
+
+```batch
+cd host
+setup.bat
+```
+
+#### On Linux or macOS:
 
 The host application requires Node.js. The `setup.sh` script will create a native messaging manifest file and make the host script executable.
 
@@ -109,5 +130,6 @@ The server will respond with a list of available tools and their schemas.
     ├───host.js         # The core Node.js WebSocket server and native messaging host
     ├───manifest.json   # Native messaging host manifest (template)
     ├───package.json    # Node.js project file (no dependencies)
-    └───setup.sh        # Host setup script
+    └───setup.sh        # Host setup script for Linux/macOS
+    └───setup.bat       # Host setup script for Windows
 ```
